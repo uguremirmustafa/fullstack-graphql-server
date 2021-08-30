@@ -1,5 +1,5 @@
-import { IDatabaseDriver, Connection, EntityManager } from '@mikro-orm/core';
 import { Request, Response } from 'express';
+import { Redis } from 'ioredis';
 
 // merge declaration which means we add extra type to the original one
 declare module 'express-session' {
@@ -9,7 +9,7 @@ declare module 'express-session' {
 }
 
 export type MyContext = {
-  em: EntityManager<IDatabaseDriver<Connection>>;
   req: Request;
   res: Response;
+  redis: Redis;
 };
